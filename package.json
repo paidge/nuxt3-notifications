@@ -1,0 +1,19 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --https true",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.17.3",
+    "@vite-pwa/nuxt": "^0.1.0",
+    "fs-extra": "^11.1.1",
+    "nuxt": "^3.6.5"
+  }
+}
