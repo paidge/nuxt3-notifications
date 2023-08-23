@@ -4,8 +4,8 @@ import fs from "fs-extra"
 export default defineNuxtConfig({
   devServer: {
     https: {
-      key: fs.readFileSync("localhost-key.pem").toString(),
-      cert: fs.readFileSync("localhost.pem").toString()
+      key: fs.readFileSync("../ssl/localhost-key.pem").toString(),
+      cert: fs.readFileSync("../ssl/localhost.pem").toString()
     }
   },
   ssr: false,
