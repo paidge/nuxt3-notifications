@@ -8,18 +8,12 @@ devDependencies:
   '@nuxt/devtools':
     specifier: latest
     version: 0.8.0(nuxt@3.6.5)(rollup@2.79.1)(vite@4.4.9)
-  '@types/fs-extra':
-    specifier: ^11.0.1
-    version: 11.0.1
   '@types/node':
     specifier: ^18.17.3
     version: 18.17.3
   '@vite-pwa/nuxt':
     specifier: ^0.1.0
     version: 0.1.0(@nuxt/kit@3.6.5)(vite-plugin-pwa@0.16.4)
-  fs-extra:
-    specifier: ^11.1.1
-    version: 11.1.1
   nuxt:
     specifier: ^3.6.5
     version: 3.6.5(@types/node@18.17.3)(rollup@2.79.1)
@@ -2714,21 +2708,8 @@ packages:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
 
-  /@types/fs-extra@11.0.1:
-    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
-    dependencies:
-      '@types/jsonfile': 6.1.1
-      '@types/node': 18.17.3
-    dev: true
-
   /@types/http-proxy@1.17.11:
     resolution: {integrity: sha512-HC8G7c1WmaF2ekqpnFq626xd3Zz0uvaqFmBJNRZCGEZCXkvSdJoNFn/8Ygbd9fKNQj8UzLdCETaI0UWPAjK7IA==}
-    dependencies:
-      '@types/node': 18.17.3
-    dev: true
-
-  /@types/jsonfile@6.1.1:
-    resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
       '@types/node': 18.17.3
     dev: true

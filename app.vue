@@ -1,32 +1,38 @@
-<template>
-  <div>
-    <VitePwaManifest />
-    <div :style="{ display: autorization ? 'block' : 'none' }">
-      <button @click="createNotification()">Lancer une notification</button>
-    </div>
-  </div>
-</template>
-
 <script setup>
-const autorization = ref(false)
+const autorization = ref(Notification.permission)
+const erreur = ref('')
 
-onMounted(() => {
+function activateNotifications() {
   if (!('Notification' in window)) {
-    console.log('This browser does not support notifications.')
+    erreur.value = 'Votre navigateur ne supporte pas les notifications'
   } else {
     Notification.requestPermission().then((permission) => {
-      autorization.value = Notification.permission === 'granted'
+      autorization.value = permission
     })
   }
-})
+}
 
 function createNotification() {
-  console.log('launch notif')
-  const img = '/icons/icon_144x144.png'
-  const text = `Ma première notification`
   const notification = new Notification('Test', {
-    body: text,
-    icon: img,
+    body: `Ma première notification`,
+    icon: '/icons/icon_144x144.png',
   })
 }
 </script>
+
+<template>
+  <div>
+    <VitePwaManifest />
+    <div v-if="erreur">{{ erreur }}</div>
+    <div v-else>
+      <div v-if="autorization === 'default'">
+        <label for="notif_autorization">Voulez-vous autoriser les notifications ?</label>
+        <button id="notif_autorization" @click="activateNotifications()">Oui</button>
+      </div>
+      <div v-if="autorization === 'granted'">
+        <button @click="createNotification()">Lancer une notification</button>
+      </div>
+      <div v-if="autorization === 'denied'">Vous avez refusé les notifications</div>
+    </div>
+  </div>
+</template>
