@@ -21,10 +21,24 @@ function activateNotifications() {
 }
 
 function createNotification() {
-  const notification = new Notification('Test', {
+  // Envoyer une notification basique
+  const notification = new Notification('Notif de test', {
     body: `Ma première notification`,
     icon: '/icons/icon_144x144.png',
   })
+}
+
+function createNotificationSW() {
+  // Envoyer un msg au service worker pour que ce dernier affiche une notification
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.ready.then((registration) => {
+      registration.active.postMessage({
+        action: 'showNotification',
+        title: 'Notification SW',
+        message: 'Notification déclenchée par le service worker.',
+      })
+    })
+  }
 }
 </script>
 
@@ -38,7 +52,13 @@ function createNotification() {
         <button id="notif_autorization" @click="activateNotifications()">Oui</button>
       </div>
       <div v-if="autorization === 'granted'">
-        <button @click="createNotification()">Lancer une notification</button>
+        <div>
+          <button @click="createNotification()">Lancer une notification</button>
+        </div>
+        <br />
+        <div>
+          <button @click="createNotificationSW()">Lancer un msg au wervice worker</button>
+        </div>
       </div>
       <div v-if="autorization === 'denied'">Vous avez refusé les notifications</div>
       <!-- Pas encore réussi à l'afficher -->
