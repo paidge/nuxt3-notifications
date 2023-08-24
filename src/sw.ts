@@ -29,4 +29,4 @@ self.addEventListener("message", event => {
 })
 
 // to allow work offline
-registerRoute(new NavigationRoute(createHandlerBoundToURL("/")))
+// registerRoute(new NavigationRoute(createHandlerBoundToURL("/")))
