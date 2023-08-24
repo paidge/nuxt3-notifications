@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   modules: ["@vite-pwa/nuxt"],
   // https://github.com/vite-pwa/vite-plugin-pwa/blob/31ccaa89bb18b7d39f8d150435b26d33dfee04dd/src/types.ts#L48
   pwa: {
+    srcDir: "src",
+    filename: "sw.ts",
+    strategies: "injectManifest",
     manifest: {
       name: "Push Notifications",
       short_name: "PushTest",

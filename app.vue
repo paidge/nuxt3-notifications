@@ -1,6 +1,14 @@
 <script setup>
 const autorization = ref(Notification.permission)
 const erreur = ref('')
+const { $pwa } = useNuxtApp()
+
+onMounted(() => {
+  if ($pwa.offlineReady) {
+    // Pas encore réussi à l'afficher
+    console.log('App ready to work offline')
+  }
+})
 
 function activateNotifications() {
   if (!('Notification' in window)) {
@@ -33,6 +41,11 @@ function createNotification() {
         <button @click="createNotification()">Lancer une notification</button>
       </div>
       <div v-if="autorization === 'denied'">Vous avez refusé les notifications</div>
+      <!-- Pas encore réussi à l'afficher -->
+      <div v-show="$pwa.needRefresh">
+        <span> New content available, click on reload button to update. </span>
+        <button @click="$pwa.updateServiceWorker()">Reload</button>
+      </div>
     </div>
   </div>
 </template>
